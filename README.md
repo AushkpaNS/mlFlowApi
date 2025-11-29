@@ -3,32 +3,32 @@
 ML Pipeline с автоматизацией и мониторингом.
 
 ## Структура проекта
-mlflow/                 
-│
-├── .gitignore
-├── .gitlab-ci.yaml
-├── README.md
-├── requirement.txt
-├── main.py
-├── test_main.py
-│
-├── github/                   
-│   └── ml-pipeline.yaml
-│
-├── configs/                   
-│   └── model_config.yaml
-├── data/ # данные для обучения модели
-│   ├── sample_data.csv            
-│   └── processed/
-│       ├── test_data.csv
-│       └── train_data.csv
-├── mlruns/ # сложная структура папок с историей запусков обучений
-├── reports/ # папка с отчетами об обучении
-├── src/       
-│   ├── train.py
-│   ├── validate.py
-│   ├── data_validation.py
-│   └── prediction.py
+mlflow/  
+│  
+├── .gitignore  
+├── .gitlab-ci.yaml  
+├── README.md  
+├── requirement.txt  
+├── main.py  
+├── test_main.py  
+│  
+├── github/                     
+│   └── ml-pipeline.yaml  
+│  
+├── configs/                     
+│   └── model_config.yaml  
+├── data/ # данные для обучения модели  
+│   ├── sample_data.csv              
+│   └── processed/  
+│       ├── test_data.csv  
+│       └── train_data.csv  
+├── mlruns/    
+├── reports/  
+├── src/         
+│   ├── train.py  
+│   ├── validate.py  
+│   ├── data_validation.py  
+│   └── prediction.py  
 
 
 ## Быстрый старт
