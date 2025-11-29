@@ -1,0 +1,46 @@
+image: python:3.9 # docker-образ с Python 3.9
+
+stages:
+  - train    # стадия обучения модели
+  - validate # стадия валидации данных
+  - deploy   # стадия разворачивания
+
+before_script:  # выполняется перед каждой стадией
+  - python -m pip install --upgrade pip
+  - pip install -r requirements.txt
+
+train:
+  stage: train  # стадия обучения
+  script:
+    - python -c "from src.data_validation import create_sample_data; create_sample_data()"
+    - python src/train.py
+  artifacts:  # сохранение результатов для следующей стадии
+    paths:
+      - reports/
+    expire_in: 1 week  # автоудаление через неделю
+
+validate:
+  stage: validate  # стадия валидации
+  script:
+    - python src/validate.py
+  dependencies:  # зависит от стадии train
+    - train
+  artifacts:
+    paths:
+      - reports/
+    expire_in: 1 week
+    
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying API to production environment"
+    - cd api
+    - nohup python -m uvicorn main:app --host 0.0.0.0 --port 8080 > api.log 2>&1 &
+    - echo "API deployed successfully"
+  only:
+    - main
+  artifacts:
+    paths:
+      - api/api.log
+    expire_in: 1 week
+    

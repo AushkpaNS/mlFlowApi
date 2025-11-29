@@ -1,0 +1,37 @@
+# Data
+data/*.csv
+!data/sample_data.csv
+!data/processed/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Reports
+reports/
+*.html
+*.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
